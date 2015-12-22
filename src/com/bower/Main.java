@@ -14,14 +14,29 @@ public class Main {
                                      {0,0,0,4,1,9,0,0,5},
                                      {0,0,0,0,8,0,0,7,9}};
 
+
+    private static int[][] sudoku2 = {{0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0},
+                                      {0,0,0,0,0,0,0,0,0}};
+
     public static void main(String[] args) {
         //System.out.println("Enter a character:");
 
         Board board = new Board(sudoku);
+        Board board2 = new Board(sudoku2);
 
         System.out.println(Arrays.toString(board.getRow(7)));
         System.out.println(Arrays.toString(board.getCol(7)));
         System.out.println(Arrays.toString(board.getBox(0,0)));
+
+        System.out.println(Boolean.toString(board.isEmpty()));
+        System.out.println(Boolean.toString(board2.isEmpty()));
 
     }
 }
