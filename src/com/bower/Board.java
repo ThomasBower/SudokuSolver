@@ -12,23 +12,14 @@ public class Board {
     }
 
     public int[] getRow (int row) {
-        if (row < 0 || row > 8)
-            throw new IllegalArgumentException("Invalid row number supplied.");
-
         return board[row];
     }
 
     public void setRow (int row, int[] vals) {
-        if (row < 0 || row > 8)
-            throw new IllegalArgumentException("Invalid row number supplied.");
-
         System.arraycopy(vals, 0, board[row], 0, 9);
     }
 
     public int[] getCol (int col) {
-        if (col < 0 || col > 8)
-            throw new IllegalArgumentException("Invalid column number supplied.");
-
         int[] column = new int[9];
         for (int i = 0; i < 9; i++)
             column[i] = board[i][col];
@@ -36,9 +27,6 @@ public class Board {
     }
 
     public void setCol (int col, int[] vals) {
-        if (col < 0 || col > 8)
-            throw new IllegalArgumentException("Invalid column number supplied.");
-
         for (int i = 0; i < 9; i++)
             board[i][col] = vals[i];
     }
@@ -52,4 +40,35 @@ public class Board {
         }
         return box;
     }
+
+    private boolean isIn (int needle, int[] haystack) {
+        for (int e : haystack) {
+            if (e == needle)
+                return true;
+        }
+        return false;
+    }
+
+    public boolean isInCol (int n, int col) {
+        return isIn(n, getCol(col));
+    }
+
+    public boolean isInRow (int n, int row) {
+        return isIn(n, getRow(row));
+    }
+
+    public boolean isInBox (int n, int x, int y) {
+        return isIn(n, getBox(x, y));
+    }
+
+    public boolean isEmpty () {
+        for (int i = 0; i < 9; i++) {
+            for (int e : getRow(i)) {
+                if (e < 10 && e > 0)
+                    return false;
+            }
+        }
+        return true;
+    }
+
 }
